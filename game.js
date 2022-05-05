@@ -6,6 +6,12 @@ var userClickedPattern = [];
 var started = false;
 var level = 0;
 
+//Makig it responsive for different device size
+var deviceWidth = $(window).width();
+if (deviceWidth <= 650){
+  $("h1").text("Touch 👉ME👈 to start");
+}
+
 //To start the game only when any keypress is detected.
 $(document).keydown(function () {
   if (!started) {
@@ -15,6 +21,14 @@ $(document).keydown(function () {
   }
 });
 
+//To start the game on mobile devices
+$("h1").on("touchstart",function () {
+  if (!started){
+    $("h1").text("Score"+level);
+    nextSequence();
+    started= true;
+  }
+})
 //For user
 $(".btn").click(function () {
   var userChosenColour = $(this).attr("id");
@@ -39,12 +53,18 @@ function checkAnswer(currentLevel) {
       $("body").removeClass("game-over");
     }, 200);
 
-    $("#level-title").text(
-      "Game Over!Your Final Score is:" + level + ".Press any key to restart"
-    );
+    if (deviceWidth <= 650){
+      $("#level-title").text("Game Over!Your Final Score is:" + level + ".Press Me to restart");
+    }
+    else{
+      $("#level-title").text(
+        "Game Over!Your Final Score is:" + level + ".Press any key to restart"
+      );
+    }
     startOver();
   }
 }
+
 function startOver() {
   level = 0;
   gamePattern = [];
