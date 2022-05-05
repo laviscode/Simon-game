@@ -51,3 +51,13 @@ body {
   box-shadow: 0 0 20px white;
   background-color: grey;
 }
+
+@media  (min-width:400) and (max-width:650){
+  #level-title{
+    font-size: 2rem;
+  }
+  .btn{
+    height: 100px;
+    width: 100px;
+  }
+}
