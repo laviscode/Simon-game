@@ -8,7 +8,7 @@ var level = 0;
 
 //Makig it responsive for different device size
 var deviceWidth = $(window).width();
-if (deviceWidth <= 650){
+if (deviceWidth <= 484){
   $("h1").text("Touch 👉ME👈 to start");
 }
 
